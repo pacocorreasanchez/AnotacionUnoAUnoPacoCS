@@ -17,7 +17,6 @@
 
 
 
-
             <ul>
                 <c:forEach var="item" items="${listado}">
                     <pre>

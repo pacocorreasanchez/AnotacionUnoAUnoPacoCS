@@ -65,6 +65,7 @@
                     </tr>
                 </table>
             </form>
+            <p><a href="${contexto}/" class="enlace">Men&uacute; inicial</a></p>
         </div>
 
 

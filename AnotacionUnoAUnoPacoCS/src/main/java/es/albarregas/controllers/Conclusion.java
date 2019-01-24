@@ -36,6 +36,7 @@ public class Conclusion extends HttpServlet {
         
         DAOFactory daof = DAOFactory.getDAOFactory();
         IGenericoDAO gdao = daof.getGenericoDAO();
+        IProfesorDAO pdao = daof.getProfesorDAO();
         
         Profesor profesor = new Profesor();
         Direccion direccion = new Direccion();
@@ -44,17 +45,22 @@ public class Conclusion extends HttpServlet {
         
         switch (request.getParameter("op")) {
             case "update":
+                profesor = pdao.getOne(Integer.parseInt(request.getParameter("id")));
+                
                 profesor.setNombre(request.getParameter("nombre"));
                 profesor.setApe1(request.getParameter("ape1"));
                 profesor.setApe2(request.getParameter("ape2"));
 
+                direccion.setId(Integer.parseInt(request.getParameter("id")));
                 direccion.setCalle(request.getParameter("calle"));
                 direccion.setNumero(Integer.parseInt(request.getParameter("numero")));
                 direccion.setPoblacion(request.getParameter("poblacion"));
                 direccion.setProvincia(request.getParameter("provincia"));
 
-                profesor.setDireccion(direccion);
+                //profesor.setDireccion(direccion);
+                
                 gdao.update(profesor);
+                gdao.update(direccion);
                 url = "index.html";
                 break;
         }
